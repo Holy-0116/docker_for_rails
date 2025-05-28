@@ -20,18 +20,25 @@ cd アプリ名
 ```
 
 
-- イメージビルド
+- イメージビルド(タグ無し)
 ```
-docker image build ./rails_app
+docker image build -t <アプリ名> ./rails_app
+```
+ERROR: Cannot connect to the Docker daemon at 〜が表示された場合はDockerDesktopが起動していない可能性があります。
+
+イメージが作成できたかを確認
+```
+docker image ls
 ```
 
 - Railsアプリ自動生成
 ```
-docker compose run --rm -it rails new . -d mysql
+docker compose run --rm -it web rails new . -d mysql
 ```
+※Overwrite /rails_app/Gemfile? (enter "h" for help) [Ynaqdhm]にはYを入力する
 
 - データベース作成
 ```
-docker compose run --rm -it rails db:create
+docker compose run --rm -it web rails db:create
 ```
 
